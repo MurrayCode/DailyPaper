@@ -1,0 +1,29 @@
+[project]
+name = "dailypaper"
+version = "0.1.0"
+description = "A whitepaper and three blog posts a day, picked by Claude and tuned by your ratings."
+requires-python = ">=3.10"
+dependencies = [
+    "anthropic>=1.17",
+    "keyring>=25",
+    "rumps>=0.4; sys_platform == 'darwin'",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "py2app>=0.28; sys_platform == 'darwin'",
+]
+
+[project.scripts]
+dailypaper = "dailypaper.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["dailypaper*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
