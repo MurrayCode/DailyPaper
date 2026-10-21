@@ -137,10 +137,10 @@ def test_accepts_valid_submission_and_sends_expected_request():
     paper, blogs = recommend(client, Config(interests="Go"), "", [], [], validate=OK, rng=random.Random(1))
     assert paper.title == "The Google File System" and len(blogs) == 3
     call = client.calls[0]
-    assert call["model"] == "claude-opus-5-5"
+    assert call["model"] == "claude-haiku-5-5"
     assert {t["name"] for t in call["tools"]} == {"web_search", "submit_reading"}
-    assert call["fallbacks"] == "default"
-    assert "tool_choice" not in call  # forced tool use 400s on Opus 5.5
+    assert "fallbacks" not in call  # Haiku 5.5 has no server-side fallback
+    assert "tool_choice" not in call  # let the model think before submitting
     paper_schema = call["tools"][1]["input_schema"]["properties"]["paper"]
     assert paper_schema["properties"]["paper_type"]["enum"] == ["industry"]
 

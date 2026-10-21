@@ -16,7 +16,6 @@ import anthropic
 from .config import ENABLED_PAPER_TYPES, Config
 from .storage import BlogPost, Paper
 
-FALLBACK_BETA = "server-side-fallback-2026-07-01"
 MAX_REQUESTS = 12          # total API round trips (searches, pause_turn resumes, retries)
 MAX_REJECTIONS = 3         # submissions we bounce back before giving up
 EXPLORATION_RATE = 0.2
@@ -190,8 +189,6 @@ def recommend(
             tools=[WEB_SEARCH_TOOL, SUBMIT_TOOL],
             output_config={"effort": "medium"},
             cache_control={"type": "ephemeral"},
-            betas=[FALLBACK_BETA],
-            fallbacks="default",
             messages=messages,
         )
 

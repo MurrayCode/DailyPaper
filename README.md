@@ -32,7 +32,7 @@ The API key is stored in the macOS Keychain (`ANTHROPIC_API_KEY` also works). If
 - **Once a day:** the app checks for today's paper at launch, when the Mac wakes, and every
   15 minutes, so a Mac left on overnight still gets a new paper. Only one paper is fetched
   per day unless you choose *Get another paper today*.
-- **Picking:** `claude-opus-5-5` uses web search to find a real paper and 3 blog posts, and
+- **Picking:** `claude-haiku-5-5` uses web search to find a real paper and 3 blog posts, and
   submits them together through a strict `submit_reading` tool. Each item is checked before
   it's accepted: the paper must be an allowed type and not already suggested (matched by
   normalised title, DOI or arXiv ID); blog posts must not repeat earlier ones (matched by

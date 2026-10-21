@@ -19,7 +19,7 @@ class Config:
     interests: str = ""
     # "academic" (journals, conferences, arXiv) and/or "industry" (vendor/engineering whitepapers)
     paper_types: list[str] = field(default_factory=lambda: list(ENABLED_PAPER_TYPES))
-    model: str = "claude-opus-5-5"
+    model: str = "claude-haiku-5-5"
 
     @classmethod
     def load(cls) -> "Config":
